@@ -3,8 +3,9 @@ package dev.paie.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import dev.paie.entite.Grade;
+import dev.paie.entite.ProfilRemuneration;
+
 @Repository
-public interface GradRepository extends JpaRepository<Grade, Integer>{
-	
+public interface ProfilRepository extends JpaRepository<ProfilRemuneration, Integer> {
+
 }

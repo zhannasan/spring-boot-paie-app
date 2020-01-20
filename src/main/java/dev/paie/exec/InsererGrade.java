@@ -24,7 +24,7 @@ public class InsererGrade implements Runnable{
 		grade.setCode("GRAD_A");
 		grade.setNbHeuresBase(new BigDecimal("152"));
 		grade.setTauxBase(new BigDecimal("21"));
-		
+
 		this.gradRepository.save(grade);
 	}
 

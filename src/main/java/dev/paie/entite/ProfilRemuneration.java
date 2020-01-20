@@ -2,7 +2,6 @@ package dev.paie.entite;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,7 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 @Entity
 @Table(name="profil_remuneration")
@@ -19,17 +17,17 @@ public class ProfilRemuneration {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String code;
-	@ManyToMany(cascade = {
-		    CascadeType.PERSIST,
-		    CascadeType.MERGE
-		})
+	@ManyToMany
 	@JoinTable(name = "profil_remuneration_cotisations", 
-		joinColumns = @JoinColumn(name = "ID_profilRemuneration", referencedColumnName = "id"), 
-		inverseJoinColumns = @JoinColumn(name = "ID_cotisation", referencedColumnName = "id"))
+		joinColumns = @JoinColumn(name = "profil_remuneration_id", referencedColumnName = "id"), 
+		inverseJoinColumns = @JoinColumn(name = "cotisations_id", referencedColumnName = "id"))
 	private List<Cotisation> cotisations;
-/*	@OneToMany(mappedBy="profilRemuneration",  cascade = CascadeType.ALL,
-	        orphanRemoval = true)
-	private List<Avantage> avantages;*/
+	
+	@ManyToMany
+	@JoinTable(name = "profil_remuneration_cotisations", 
+		joinColumns = @JoinColumn(name = "profil_remuneration_id", referencedColumnName = "id"), 
+		inverseJoinColumns = @JoinColumn(name = "avantages_id", referencedColumnName = "id"))
+	private List<Avantage> avantages;
 
 	public Integer getId() {
 		return id;
@@ -55,12 +53,12 @@ public class ProfilRemuneration {
 		this.cotisations = cotisations;
 	}
 
-	/*public List<Avantage> getAvantages() {
+	public List<Avantage> getAvantages() {
 		return avantages;
 	}
 
 	public void setAvantages(List<Avantage> avantages) {
 		this.avantages = avantages;
-	}*/
+	}
 
 }

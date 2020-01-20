@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 @Entity
@@ -16,10 +17,10 @@ public class BulletinSalaire {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "remunerationEmploye_id")
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "remuneration_employe_id")
 	private RemunerationEmploye remunerationEmploye;
-	@OneToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "periode_id")
 	private Periode periode;
 	private BigDecimal primeExceptionnelle;
