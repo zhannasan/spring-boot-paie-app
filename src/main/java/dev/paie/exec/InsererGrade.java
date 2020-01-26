@@ -21,9 +21,9 @@ public class InsererGrade implements Runnable{
 	@Override
 	public void run() {
 		Grade grade = new Grade();
-		grade.setCode("GRAD_A");
+		grade.setCode("GRAD_D");
 		grade.setNbHeuresBase(new BigDecimal("152"));
-		grade.setTauxBase(new BigDecimal("21"));
+		grade.setTauxBase(new BigDecimal("11"));
 
 		this.gradRepository.save(grade);
 	}
